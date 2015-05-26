@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+     <meta charset="utf-8">
+        <title>Welcome to Hearts!</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        {% load staticfiles %}
+        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+        <style type="text/css">
+            body {
+                padding-top: 20px;
+                padding-bottom: 40px;
+            }
+
+            /* Custom container */
+            .container-narrow {
+                margin: 0 auto;
+                max-width: 700px;
+            }
+            .container-narrow > hr {
+                margin: 30px 0;
+            }
+
+              </style>
+        <link href="{% static 'css/bootstrap-responsive.min.css' %}" rel="stylesheet">
+
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+        <!-- Fav and touch icons -->
+        <link rel="shortcut icon" href="{%static 'ico/favicon.ico' %}">
+   </head>
+
+    <body>
+        <div class="navbar navbar-default">
+            <div class="navbar-header">
+              Hearts Multiplayer
+            <div>
+              <ul class="nav navbar-nav">
+                <li><a href="">Home</a></li>
+                {% if authenticated %}
+                <li><a href="logout/">Logout</a></li> 
+                {% else %}
+                <li><a href="login/">Login</a></li>
+                <li><a href="register/">Register</a></li> 
+                {% endif %}
+              </ul>
+            </div>
+          </div>
+        </div>
+        </br>
+        <div class="container">
+            {% if authenticated %}
+                <h3> Welcome to multiplayer Hearts Online, {{ request.user.first_name }}! </h3>    
+                </br>
+                <h4> What do you want to do? </h4>
+                </br>
+                <button type="button" class="btn btn-link"><a href="newgame/">Start a new game!</a></button>
+                <button type="button" class="btn btn-link"><a href="joingame/">Join an existing game!</a></button>
+            {% else %}
+                <h3> Welcome to multiplayer Hearts Online! </h3>
+                </br>
+                <h4> Follow the links on top to register as a user, or log in. </h4>
+            {% endif %}
+        </div>
+       <!-- Le javascript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" ></script>
+       <script src="{%static 'js/bootstrap.min.js' %}"></script>
+    </body>
+</html>
